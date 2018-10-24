@@ -4,37 +4,21 @@ app = express(),
 port = process.env.PORT || 3000;
 const bodyParser = require ('body-parser');
 const path = require('path');
-//const config = require('./config')();
-//const configdb= require('./config/database');
-//const mongoose = require('mongoose');
+
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const expressValidator = require('express-validator');
-const passport = require('passport');
 const flash= require('connect-flash');
 
 var urlencodedParser = bodyParser.urlencoded({ extended: true });
 
- //database
-//mongoose.connect(configdb.database)
-//let db = mongoose.connection;
-
-//check connections
-//db.once('open', function(){
- // console.log('Connected to Mongodb');
-//});
-//check for db errors
-//db.on('error', function(err){
- // console.log(err);
-//});
 
 //set template engine
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
-//require('./config/passport') (passport);
 
 
 
@@ -90,19 +74,6 @@ app.use(flash());
     }
   }));
 
-//passport config
-/*require('./config/passport')(passport);
-//passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-app.get('*', function(req, res, next){
-  res.locals.user = req.user||null;
- // console.log(req.user);
-  next();
-
-});*/
 
 
 //call all the routes
